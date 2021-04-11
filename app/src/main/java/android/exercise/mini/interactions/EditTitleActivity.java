@@ -36,7 +36,6 @@ public class EditTitleActivity extends AppCompatActivity {
     EditText editTextTitle = findViewById(R.id.editTextPageTitle);
 
 
-
     // setup - start from static title with "edit" button
     fabStartEdit.setVisibility(View.VISIBLE);
     fabEditDone.setVisibility(View.GONE);
@@ -60,9 +59,29 @@ public class EditTitleActivity extends AppCompatActivity {
       to complete (1.) & (2.), start by just changing visibility. only add animations after everything else is ready
        */
       this.isEditing = true;
-      fabStartEdit.setVisibility(View.GONE);
+      fabStartEdit.animate()
+              .alpha(0f)
+              .setDuration(200L)
+              .withEndAction(new Runnable() {
+        @Override
+        public void run() {
+          fabStartEdit.setAlpha(1f);
+          fabStartEdit.setVisibility(View.GONE);
+        }
+      }).start();
       fabEditDone.setVisibility(View.VISIBLE);
-      textViewTitle.setVisibility(View.GONE);
+      textViewTitle.animate()
+              .translationX(400f)
+              .setDuration(200L)
+              .alpha(0f)
+              .withEndAction(new Runnable() {
+        @Override
+        public void run() {
+          textViewTitle.setAlpha(1f);
+          textViewTitle.setTranslationX(0f);
+          textViewTitle.setVisibility(View.GONE);
+        }
+      }).start();
       editTextTitle.setVisibility(View.VISIBLE);
     });
 
@@ -80,11 +99,33 @@ public class EditTitleActivity extends AppCompatActivity {
       to complete (1.) & (2.), start by just changing visibility. only add animations after everything else is ready
        */
       this.isEditing = false;
-      fabEditDone.setVisibility(View.GONE);
+      fabEditDone.animate()
+              .alpha(0f)
+              .setDuration(200L)
+              .withEndAction(new Runnable() {
+                @Override
+                public void run() {
+                  fabEditDone.setAlpha(1f);
+                  fabEditDone.setVisibility(View.GONE);
+                }
+              }).start();
       fabStartEdit.setVisibility(View.VISIBLE);
       textViewTitle.setText(editTextTitle.getText());
       textViewTitle.setVisibility(View.VISIBLE);
-      editTextTitle.setVisibility(View.GONE);
+      editTextTitle.animate()
+              .alpha(0f)
+              .translationY(30f)
+              .translationX(-10f)
+              .setDuration(100L)
+              .withEndAction(new Runnable() {
+                @Override
+                public void run() {
+                  editTextTitle.setAlpha(1f);
+                  editTextTitle.setTranslationY(0f);
+                  editTextTitle.setTranslationX(0f);
+                  editTextTitle.setVisibility(View.GONE);
+                }
+              }).start();
     });
   }
 
@@ -114,13 +155,34 @@ public class EditTitleActivity extends AppCompatActivity {
     EditText editTextTitle = findViewById(R.id.editTextPageTitle);
 
     if (isEditing){
-      editTextTitle.setVisibility(View.GONE);
+      editTextTitle.animate()
+              .alpha(0f)
+              .translationY(30f)
+              .translationX(-10f)
+              .setDuration(100L)
+              .withEndAction(new Runnable() {
+                @Override
+                public void run() {
+                  editTextTitle.setAlpha(1f);
+                  editTextTitle.setTranslationY(0f);
+                  editTextTitle.setTranslationX(0f);
+                  editTextTitle.setVisibility(View.GONE);
+                }
+              }).start();
       textViewTitle.setVisibility(View.VISIBLE);
-      fabEditDone.setVisibility(View.GONE);
+      fabEditDone.animate()
+              .alpha(0f)
+              .setDuration(200L)
+              .withEndAction(new Runnable() {
+                @Override
+                public void run() {
+                  fabEditDone.setAlpha(1f);
+                  fabEditDone.setVisibility(View.GONE);
+                }
+              }).start();
       fabStartEdit.setVisibility(View.VISIBLE);
     }
-    else {
+    else
       super.onBackPressed();
-    }
   }
 }
