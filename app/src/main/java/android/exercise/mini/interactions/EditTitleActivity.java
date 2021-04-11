@@ -59,8 +59,9 @@ public class EditTitleActivity extends AppCompatActivity {
       to complete (1.) & (2.), start by just changing visibility. only add animations after everything else is ready
        */
 
-      // change thw is editing field to true.
+      // change the isEditing field to true.
       this.isEditing = true;
+
       fabStartEdit.animate()
               .alpha(0f)
               .setDuration(200L)
@@ -100,8 +101,9 @@ public class EditTitleActivity extends AppCompatActivity {
 
       to complete (1.) & (2.), start by just changing visibility. only add animations after everything else is ready
        */
-      // change thw is editing field to false.
+      // change the isEditing field to false.
       this.isEditing = false;
+
       fabEditDone.animate()
               .alpha(0f)
               .setDuration(200L)
