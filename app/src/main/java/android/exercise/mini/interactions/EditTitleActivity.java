@@ -115,6 +115,7 @@ public class EditTitleActivity extends AppCompatActivity {
                 }
               }).start();
       fabStartEdit.setVisibility(View.VISIBLE);
+      // change the title text to the new title.
       textViewTitle.setText(editTextTitle.getText());
       textViewTitle.setVisibility(View.VISIBLE);
       editTextTitle.animate()
@@ -174,6 +175,8 @@ public class EditTitleActivity extends AppCompatActivity {
                   editTextTitle.setVisibility(View.GONE);
                 }
               }).start();
+      // change the text in the editTextTitle beck to the previous title.
+      editTextTitle.setText(textViewTitle.getText());
       textViewTitle.setVisibility(View.VISIBLE);
       fabEditDone.animate()
               .alpha(0f)
